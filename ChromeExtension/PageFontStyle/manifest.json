@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "PageFontStyle Extension",
+    "version": "1.0",
+    "description": "Changes font style on specific page",
+    "icons": {
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+    "page_action": {
+        "default_icon": "icon16.png",
+        "default_popup": "popup.html",
+        "default_title": "PageFontStyle"
+    },
+    "background": {
+        "scripts": ["eventPage.js", "jquery-3.3.1.min.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.trendyol.com/*"],
+            "js": ["jquery-3.3.1.min.js", "canvasjs.min.js", "content.js"],
+            "css": ["content.css"]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "https://www.trendyol.com/*"
+    ]
+}

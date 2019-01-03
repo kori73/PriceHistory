@@ -1,0 +1,25 @@
+.search-result-title h1 {
+    font-weight: bold !important;
+    color: blue !important;
+}
+.pi-cr {
+    position: relative !important;
+}
+.canvasjs-chart-container {
+    width: 100% !important;
+    height: 412.4px !important;
+}
+.canvasjs-chart-canvas {
+    position: absolute !important;
+    width: 100% !important;
+    height: 412.4px !important;
+    opacity: 1 !important;
+}
+
+.pi-cr:hover .canvasjs-chart-canvas{
+    opacity: 1;
+}
+
+.primg:hover {
+    opacity: 1;
+}
