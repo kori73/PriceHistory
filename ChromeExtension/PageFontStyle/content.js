@@ -1,11 +1,5 @@
 chrome.runtime.sendMessage({todo: "showPageAction"});
 
-$("li").hover(function(){
-    $(this).css("background-color", "yellow");
-    }, function(){
-    $(this).css("background-color", "pink");
-  });
-
   var datapoints = [
     { x: new Date(2012, 01, 1), y: 450 },
     { x: new Date(2012, 01, 2), y: 414 },
@@ -44,6 +38,9 @@ var options = [
      title: {
          text: "Price"
      },
+     toolTip:{
+        enabled: false,
+      },
      data: [              
          {
          	type: "line",
@@ -53,17 +50,26 @@ var options = [
  	}        
 ];
 
- function renderChartsByClassName(className,options) {
-     var charts = [];
-     var images = [];
-     var chartClassElements = document.getElementsByClassName(className);
-     for (var i = 0; i < chartClassElements.length; i++) {
-        images.push(chartClassElements[i].children[0]);
-        charts.push(new CanvasJS.Chart(chartClassElements[i], options));
-        charts[i].render();
-        chartClassElements[i].appendChild(images[i])
-     }
- }
-
-// this method take the class and options array 
-renderChartsByClassName("pi-cr", options[0]);
+$(window).on('load', function(){
+var images = [];
+var chartClassElements = document.getElementsByClassName("pi-cr");
+var cards = document.getElementsByClassName("pc-wrp");
+for (let i=0; i<chartClassElements.length; i++) {
+    let chartClass = chartClassElements[i];
+    images.push(chartClass.children[0]);
+    cards[i].onmouseenter = (function() {
+        return function() {
+            var chart = new CanvasJS.Chart(chartClass, options[0])
+            chart.render();
+            }
+    }());
+    cards[i].onmouseleave = (function() {
+        return function() {
+            while (chartClass.firstChild) {
+                chartClass.removeChild(chartClass.firstChild);
+                }
+            chartClass.appendChild(images[i]);
+            }
+        }());
+    }
+});

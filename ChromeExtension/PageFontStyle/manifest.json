@@ -20,7 +20,7 @@
     "content_scripts": [
         {
             "matches": ["https://www.trendyol.com/*"],
-            "js": ["jquery-3.3.1.min.js", "canvasjs.min.js", "content.js"],
+            "js": ["jquery-3.3.1.min.js", "canvasjs.min.js", "content2.js"],
             "css": ["content.css"]
         }
     ],
