@@ -4,6 +4,7 @@ import re
 
 from .utility import filter_by_brands
 
+
 class KadinSpider(scrapy.Spider):
     name = "kadin"
     base_url = 'https://www.trendyol.com/kadin+giyim?siralama=13&qs=search'
@@ -13,9 +14,9 @@ class KadinSpider(scrapy.Spider):
         start_urls = []
         stop_urls = []
         for link in links:
-            p = urlparse(link) # Parse each url
+            p = urlparse(link)  # Parse each url
             stop_url = 'https://' + p.netloc + p.path  # Obtain the stopping urls
-            start_url = stop_url +'?pi={}'
+            start_url = stop_url + '?pi={}'
             stop_urls.append(stop_url)
             start_urls.append(start_url)
 
